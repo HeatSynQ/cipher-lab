@@ -13,7 +13,7 @@ const CaeserInput = ({setOutputText, input_text}) => {
                 return char;
             }
         }).join("");
-        console.log(encodedText, input_text)
+        console.log(`${input_text} => ${encodedText}`);
         setOutputText(encodedText);
     }
 
@@ -22,13 +22,14 @@ const CaeserInput = ({setOutputText, input_text}) => {
             <label>Enter Shift Value</label>
             <input 
                 type="number" 
+                className="input-area"
                 value={shift}
                 min="0"
                 max="25"
                 step="1"
                 placeholder="Shift Value"
                 onChange={(e) => {
-                    setShift(e.target.value);
+                    setShift(+e.target.value);
                 }}
             />
             <button onClick={() => {encode()}}>Encode</button>
@@ -36,9 +37,45 @@ const CaeserInput = ({setOutputText, input_text}) => {
     );
 }
 
-const VigenereInput = ({setOutputText}) => {
+const VigenereInput = ({setOutputText, input_text}) => {
+
+    const [key, setKey] = useState("");
+
+    const encode = () => {
+        if (!key || key.length === 0) {
+            setKey("a");
+        }
+    
+        let currentIndex = 0;
+        const keyLen = key  .length;
+    
+        const outputText = input_text.toLowerCase().split("").map((char) => {
+            if (char.match(/[a-z]/)) {
+                const diff = key.toLowerCase().charCodeAt(currentIndex % keyLen) - 97;
+                const outputChar = String.fromCharCode(((char.charCodeAt(0) - 97 + diff) % 26) + 97);
+                currentIndex += 1;
+                return outputChar;
+            } else {
+                return char;
+            }
+        }).join("");
+    
+        setOutputText(outputText);
+    };
+    
+    
+
     return ( 
-        <div className="vigenere-input"></div>
+        <div className="vigenere-input">
+            <label htmlFor="key" className="input-area">Enter Key: </label>
+            <input 
+                type="text" 
+                id="key" 
+                value={key}
+                onChange={(e) => {setKey(e.target.value)}}
+            />
+            <button onClick={() => {encode()}}>Encode</button>
+        </div>
     );
 }
 

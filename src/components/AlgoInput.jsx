@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import {PolyalphabeticInput, VigenereInput, CaeserInput} from "./AlgoInputs"
+import {PolyalphabeticInput, VigenereInput, CaeserInput} from "./Algo_Form"
 
 const AlgoInput = ({input_text, selectedAlgo, setOutputText}) => {
 
