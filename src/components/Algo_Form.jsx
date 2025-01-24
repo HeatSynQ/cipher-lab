@@ -4,18 +4,29 @@ const CaeserInput = ({setOutputText, input_text}) => {
     const [shift, setShift] = useState(1);
 
     const encode = () => {
-        const encodedText = input_text.split("").map((char) => {
+        const outputText = input_text.toLowerCase().split("").map((char) => {
             if (char.match(/[a-z]/)){
                 return String.fromCharCode(((char.charCodeAt(0) - 97 + shift) % 26) + 97);
-            } else if (char.match(/[A-Z]/)) {
-                return String.fromCharCode(((char.charCodeAt(0) - 65 + shift) % 26) + 65);
+            }else {
+                return char;
+            }
+        }).join("");
+        console.log(`${input_text} => ${outputText}`);
+        setOutputText(outputText);
+    }
+
+    const decode = () => {
+        const outputText = input_text.toLowerCase().split("").map((char) => {
+            if (char.match(/[a-z]/)) {
+                const shiftedValue = (char.charCodeAt(0) - 97 - shift) % 26;
+                return String.fromCharCode((shiftedValue < 0 ? shiftedValue + 26 : shiftedValue) + 97);
             } else {
                 return char;
             }
         }).join("");
-        console.log(`${input_text} => ${encodedText}`);
-        setOutputText(encodedText);
-    }
+        setOutputText(outputText);
+    };
+    
 
     return (
         <div className="ceaser-input">
@@ -33,6 +44,7 @@ const CaeserInput = ({setOutputText, input_text}) => {
                 }}
             />
             <button onClick={() => {encode()}}>Encode</button>
+            <button onClick={() => {decode()}}>Decode</button>
         </div>
     );
 }
@@ -62,8 +74,29 @@ const VigenereInput = ({setOutputText, input_text}) => {
     
         setOutputText(outputText);
     };
+
+    const decode = () => {
+        if (!key || key.length === 0) {
+            setKey("a");
+        }
     
+        let currentIndex = 0;
+        const keyLen = key  .length;
     
+        const outputText = input_text.toLowerCase().split("").map((char) => {
+            if (char.match(/[a-z]/)) {
+                const diff = key.toLowerCase().charCodeAt(currentIndex % keyLen) - 97;
+                const shiftedValue = ((char.charCodeAt(0) - 97 - diff) % 26)
+                const outputChar = String.fromCharCode((shiftedValue < 0 ? shiftedValue + 26 : shiftedValue) + 97);
+                currentIndex += 1;
+                return outputChar;
+            } else {
+                return char;
+            }
+        }).join("");
+    
+        setOutputText(outputText);
+    };
 
     return ( 
         <div className="vigenere-input">
@@ -75,14 +108,9 @@ const VigenereInput = ({setOutputText, input_text}) => {
                 onChange={(e) => {setKey(e.target.value)}}
             />
             <button onClick={() => {encode()}}>Encode</button>
+            <button onClick={() => {decode()}}>Decode</button>
         </div>
     );
 }
-
-const PolyalphabeticInput = ({setOutputText}) => {
-    return (  
-        <div className="poly-input"></div> 
-    );
-}
  
-export {CaeserInput, VigenereInput, PolyalphabeticInput};
+export {CaeserInput, VigenereInput};
