@@ -10,9 +10,11 @@ const Body = () => {
     return (
         <div className="body">
             <div className="input-container">
+
                 <input
                     type="text"
                     value={input_text}
+                    placeholder="Plain Text"
                     onChange={e => {
                         setInputText(e.target.value);
                     }}
@@ -38,6 +40,7 @@ const Body = () => {
                 <textarea
                     name="output-text"
                     id="output-text"
+                    placeholder="Cipher Text"
                     value={output_text}
                     readOnly
                 ></textarea>

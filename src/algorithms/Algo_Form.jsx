@@ -100,11 +100,11 @@ const VigenereInput = ({ setOutputText, input_text }) => {
 
     return (
         <div className="vigenere-input">
-            <label htmlFor="key" className="input-area">Enter Key: </label>
             <input
                 type="text"
                 id="key"
                 value={key}
+                placeholder="Enter key"
                 onChange={(e) => { setKey(e.target.value) }}
             />
             <button onClick={() => { encode() }}>Encode</button>
@@ -163,7 +163,7 @@ const OneTimePadInput = ({ setOutputText, input_text }) => {
 
     return (
         <div className="one-time-pad-input">
-            <label>Enter Key</label>
+
             <input
                 type="text"
                 className="input-area"
