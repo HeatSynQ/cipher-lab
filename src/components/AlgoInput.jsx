@@ -1,14 +1,15 @@
-import { useEffect } from "react";
-import {VigenereInput, CaeserInput} from "./Algo_Form"
+import { VigenereInput, CaeserInput, OneTimePadInput } from "../algorithms/Algo_Form";
 
-const AlgoInput = ({input_text, selectedAlgo, setOutputText}) => {
+const AlgoInput = ({ input_text, selectedAlgo, setOutputText }) => {
+    return selectedAlgo === "caeser" ? (
+        <CaeserInput setOutputText={setOutputText} input_text={input_text} />
+    ) : selectedAlgo === "vigenere" ? (
+        <VigenereInput setOutputText={setOutputText} input_text={input_text} />
+    ) : selectedAlgo === "otp" ? (
+        <OneTimePadInput setOutputText={setOutputText} input_text={input_text} />
+    ) : (
+        <>Nothing</>
+    )
+};
 
-    switch (selectedAlgo) {
-        case "caeser":
-            return(<CaeserInput setOutputText={setOutputText} input_text={input_text}/>)
-        case "vigenere":
-            return(<VigenereInput setOutputText={setOutputText} input_text={input_text}/>)
-    }
-}
- 
 export default AlgoInput;

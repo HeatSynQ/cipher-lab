@@ -1,6 +1,6 @@
 const Header = () => {
     return (
-        <div className="header">Cipher | Encrypt or Decrypt</div>        
+        <header className="header">Cipher | Encrypt or Decrypt</header>
     );
 }
 export default Header;
