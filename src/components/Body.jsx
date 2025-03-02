@@ -29,6 +29,9 @@ const Body = () => {
                     <option value="caeser">Caesar Cipher</option>
                     <option value="vigenere">Vigenère Cipher</option>
                     <option value="otp">One Time Pad</option>
+                    <option value="poly">Polyalphabetic Cipher</option>
+                    <option value="column">Columnar Transposition Cipher</option>
+                    <option value="rail-fence">Rail Fence Cipher</option>
                 </select>
             </div>
             <AlgoInput
