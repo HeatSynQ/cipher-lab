@@ -1,8 +1,11 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
 .body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
     text-align: center;
     display: flex;
     align-items: center;
@@ -18,12 +21,10 @@
 }
 
 .body {
-    max-width: 620px;
+    max-width: 600px;
     height: 175px;
     margin: 20px auto;
-    background: white;
     padding: 30px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
 
@@ -31,47 +32,16 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 200px;
 }
 
-input[type="text"],
-input[type="number"],
-textarea,
-select {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-select {
-    cursor: pointer;
-    background-color: white;
-    color: black;
-}
-
-.ceaser-input,
-.vigenere-input,
-.one-time-pad-input {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 15px;
-}
-
-.input-area {
-    padding: 6px;
-    border: 1px solid #aaa;
-    border-radius: 4px;
-}
-
-label {
-    font-weight: bold;
+.output-container {
+    width: 200px;
 }
 
 button {
     padding: 8px 12px;
-    margin: 5px;
+    width: 100%;
     border: none;
     background-color: #007bff;
     color: white;
@@ -88,4 +58,30 @@ textarea {
     height: 80px;
     resize: none;
     background-color: #f9f9f9;
+}
+
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.cipher-input {
+    width: 200px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 }

@@ -29,7 +29,7 @@ const CaeserInput = ({ setOutputText, input_text }) => {
 
 
     return (
-        <div className="ceaser-input">
+        <div className="cipher-input">
             <label>Enter Shift Value</label>
             <input
                 type="number"
@@ -38,7 +38,6 @@ const CaeserInput = ({ setOutputText, input_text }) => {
                 min="1"
                 max="25"
                 step="1"
-                placeholder="Shift Value"
                 onChange={(e) => {
                     setShift(+e.target.value);
                 }}
@@ -99,7 +98,7 @@ const VigenereInput = ({ setOutputText, input_text }) => {
     };
 
     return (
-        <div className="vigenere-input">
+        <div className="cipher-input">
             <input
                 type="text"
                 id="key"
@@ -162,7 +161,7 @@ const OneTimePadInput = ({ setOutputText, input_text }) => {
     };
 
     return (
-        <div className="one-time-pad-input">
+        <div className="cipher-input">
 
             <input
                 type="text"
@@ -227,9 +226,9 @@ const PolyalphabeticInput = ({ setOutputText, input_text }) => {
     };
 
     return (
-        <div className="polyalphabetic-input">
-            <label htmlFor="key">Enter Key:</label>
+        <div className="cipher-input">
             <input
+                placeholder="Enter Key"
                 type="text"
                 id="key"
                 value={key}
@@ -313,8 +312,7 @@ const ColumnarTranspositionInput = ({ setOutputText, input_text }) => {
     };
 
     return (
-        <div className="columnar-transposition-input">
-            <label>Enter Key</label>
+        <div className="cipher-input">
             <input
                 type="text"
                 className="input-area"
@@ -388,7 +386,7 @@ const RailFenceInput = ({ setOutputText, input_text }) => {
     };
 
     return (
-        <div className="rail-fence-input">
+        <div className="cipher-input">
             <label>Enter Number of Rails</label>
             <input
                 type="number"
