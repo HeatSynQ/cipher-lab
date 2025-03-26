@@ -23,6 +23,7 @@ const Body = () => {
                     name="algo-select"
                     id="algo-select"
                     onChange={(e) => {
+                        setOutputText("");
                         setSelectedAlgo(e.target.value);
                     }}
                 >
